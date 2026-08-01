@@ -30,6 +30,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Generic repository layer (specialized repos are registered as they're added).
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+// AutoMapper: discovers every Profile in this assembly (see Profiles/).
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(Program).Assembly));
+
 // Business services
 builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -63,6 +66,9 @@ var app = builder.Build();
 // --- HTTP pipeline ---
 if (app.Environment.IsDevelopment())
 {
+    // Fail fast at boot if any AutoMapper profile is misconfigured (no DB needed).
+    app.Services.GetRequiredService<AutoMapper.IConfigurationProvider>().AssertConfigurationIsValid();
+
     app.MapOpenApi();
     app.MapScalarApiReference(); // interactive API docs at /scalar/v1
 }
