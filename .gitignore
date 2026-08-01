@@ -1,0 +1,9 @@
+# .NET / Visual Studio build output & editor state
+bin/
+obj/
+.vs/
+*.user
+
+# App secrets — real connection strings / JWT keys live here or in .env
+appsettings.Development.json
+.env

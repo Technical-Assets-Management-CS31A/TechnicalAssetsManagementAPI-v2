@@ -1,0 +1,6 @@
+@BackendTechnicalEquipmentBorrowingSystem_HostAddress = http://localhost:5123
+
+GET {{BackendTechnicalEquipmentBorrowingSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
