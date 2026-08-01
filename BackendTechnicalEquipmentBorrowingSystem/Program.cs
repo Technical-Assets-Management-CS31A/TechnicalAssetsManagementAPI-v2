@@ -37,6 +37,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IBorrowingService, BorrowingService>();
 builder.Services.AddScoped<IRfidSessionService, RfidSessionService>();
+builder.Services.AddScoped<ISummaryService, SummaryService>();
+builder.Services.AddScoped<IArchiveService, ArchiveService>();
+builder.Services.AddScoped<IImportService, ImportService>();
 
 // JWT bearer auth (tokens issued by AuthService)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
