@@ -1,6 +1,7 @@
 using BackendTechnicalEquipmentBorrowingSystem.Entities;
 using BackendTechnicalEquipmentBorrowingSystem.IRepository;
 using BackendTechnicalEquipmentBorrowingSystem.IService;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackendTechnicalEquipmentBorrowingSystem.Services;
 
@@ -17,8 +18,12 @@ public class BorrowingService : IBorrowingService
         _log = log;
     }
 
-    public Task<List<Borrowing>> GetAllAsync() => _borrowings.GetAllAsync();
-    public Task<Borrowing?> GetByIdAsync(int id) => _borrowings.GetByIdAsync(id);
+    // Include(Item)/Include(Borrower): BorrowingDto flattens their names, so callers need the navs loaded.
+    public Task<List<Borrowing>> GetAllAsync() =>
+        _borrowings.Query().Include(b => b.Item).Include(b => b.Borrower).ToListAsync();
+
+    public Task<Borrowing?> GetByIdAsync(int id) =>
+        _borrowings.Query().Include(b => b.Item).Include(b => b.Borrower).FirstOrDefaultAsync(b => b.Id == id);
 
     public async Task<Borrowing> ReserveAsync(int itemId, int borrowerId, int reservationMinutes = 30)
     {
