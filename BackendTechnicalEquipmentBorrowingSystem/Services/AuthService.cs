@@ -28,6 +28,8 @@ public class AuthService : IAuthService
     {
         if (await _users.ExistsAsync(u => u.Email == r.Email))
             throw new InvalidOperationException($"Email '{r.Email}' is already registered.");
+        if (await _users.ExistsAsync(u => u.Username == r.Username))
+            throw new InvalidOperationException($"Username '{r.Username}' is already taken.");
 
         User user = r.Role switch
         {
@@ -50,6 +52,7 @@ public class AuthService : IAuthService
         user.FirstName = r.FirstName;
         user.LastName = r.LastName;
         user.Email = r.Email;
+        user.Username = r.Username;
         user.Role = r.Role;
         user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(r.Password);
 
@@ -61,9 +64,9 @@ public class AuthService : IAuthService
 
     public async Task<AuthResult> LoginAsync(LoginRequest r)
     {
-        var user = await _users.FirstOrDefaultAsync(u => u.Email == r.Email);
+        var user = await _users.FirstOrDefaultAsync(u => u.Email == r.Identifier || u.Username == r.Identifier);
         if (user is null || !BCrypt.Net.BCrypt.Verify(r.Password, user.PasswordHash))
-            throw new UnauthorizedAccessException("Invalid email or password.");
+            throw new UnauthorizedAccessException("Invalid credentials.");
         if (user.IsBlocked || !user.IsActive)
             throw new UnauthorizedAccessException("Account is blocked or inactive.");
 

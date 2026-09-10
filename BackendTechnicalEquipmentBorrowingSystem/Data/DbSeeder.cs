@@ -14,35 +14,35 @@ public static class DbSeeder
 
         var superAdmin = new User
         {
-            FirstName = "Sam", LastName = "Root", Email = "superadmin@school.edu",
+            FirstName = "Sam", LastName = "Root", Email = "superadmin@school.edu", Username = "superadmin",
             PasswordHash = Hash("Password123!"), Role = Role.SuperAdmin
         };
         var admin = new User
         {
-            FirstName = "Ana", LastName = "Admin", Email = "admin@school.edu",
+            FirstName = "Ana", LastName = "Admin", Email = "admin@school.edu", Username = "admin",
             PasswordHash = Hash("Password123!"), Role = Role.Admin
         };
         var teacher = new Faculty
         {
-            FirstName = "Tom", LastName = "Teacher", Email = "teacher@school.edu",
+            FirstName = "Tom", LastName = "Teacher", Email = "teacher@school.edu", Username = "teacher",
             PasswordHash = Hash("Password123!"), Role = Role.Faculty,
             Position = FacultyPosition.Teacher, EmployeeNumber = "F-0001", Department = "Computer Science"
         };
         var staff = new Faculty
         {
-            FirstName = "Stacy", LastName = "Staff", Email = "staff@school.edu",
+            FirstName = "Stacy", LastName = "Staff", Email = "staff@school.edu", Username = "staff",
             PasswordHash = Hash("Password123!"), Role = Role.Faculty,
             Position = FacultyPosition.StaffUtilities, EmployeeNumber = "F-0002", Department = "Facilities"
         };
         var student1 = new Student
         {
-            FirstName = "Sean", LastName = "Student", Email = "student1@school.edu",
+            FirstName = "Sean", LastName = "Student", Email = "student1@school.edu", Username = "student1",
             PasswordHash = Hash("Password123!"), Role = Role.Student,
             StudentNumber = "S-2026-001", Course = "BSIT", Section = "3A"
         };
         var student2 = new Student
         {
-            FirstName = "Sofia", LastName = "Santos", Email = "student2@school.edu",
+            FirstName = "Sofia", LastName = "Santos", Email = "student2@school.edu", Username = "student2",
             PasswordHash = Hash("Password123!"), Role = Role.Student,
             StudentNumber = "S-2026-002", Course = "BSCS", Section = "2B"
         };

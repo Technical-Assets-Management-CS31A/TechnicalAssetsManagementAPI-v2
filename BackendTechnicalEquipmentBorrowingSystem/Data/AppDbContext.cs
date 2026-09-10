@@ -53,6 +53,7 @@ public class AppDbContext : DbContext
 
         // Unique constraints (Postgres treats multiple NULLs as distinct, so optional UIDs are fine).
         modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+        modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
         modelBuilder.Entity<Student>().HasIndex(s => s.StudentNumber).IsUnique();
         modelBuilder.Entity<Student>().HasIndex(s => s.RfidCardUid).IsUnique();
         modelBuilder.Entity<Item>().HasIndex(i => i.SerialNumber).IsUnique();
