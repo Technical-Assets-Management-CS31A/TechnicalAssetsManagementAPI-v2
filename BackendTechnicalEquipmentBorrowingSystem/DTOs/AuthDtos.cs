@@ -6,6 +6,7 @@ public record RegisterRequest(
     string FirstName,
     string LastName,
     string Email,
+    string Username,
     string Password,
     Role Role,
     // Student-only (ignored for other roles)
@@ -17,7 +18,8 @@ public record RegisterRequest(
     string? EmployeeNumber = null,
     string? Department = null);
 
-public record LoginRequest(string Email, string Password);
+// Identifier accepts either the user's email or username.
+public record LoginRequest(string Identifier, string Password);
 
 public record AuthResult(
     int UserId,
