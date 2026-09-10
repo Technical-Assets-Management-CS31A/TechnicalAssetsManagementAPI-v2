@@ -111,13 +111,13 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // --- HTTP pipeline ---
+app.MapOpenApi();
+app.MapScalarApiReference(); // interactive API docs at /scalar/v1
+
 if (app.Environment.IsDevelopment())
 {
     // Fail fast at boot if any AutoMapper profile is misconfigured (no DB needed).
     app.Services.GetRequiredService<AutoMapper.IConfigurationProvider>().AssertConfigurationIsValid();
-
-    app.MapOpenApi();
-    app.MapScalarApiReference(); // interactive API docs at /scalar/v1
 
     using (var scope = app.Services.CreateScope())
     {
