@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v2/auth")]
 public class AuthController(IAuthService auth) : ControllerBase
 {
     private const string AccessTokenCookie = "accessToken";
@@ -57,7 +57,6 @@ public class AuthController(IAuthService auth) : ControllerBase
     }
 
     [HttpPost("refresh")]
-    [HttpPost("refresh-token")]
     public async Task<IActionResult> Refresh()
     {
         var refreshToken = Request.Cookies[RefreshTokenCookie];

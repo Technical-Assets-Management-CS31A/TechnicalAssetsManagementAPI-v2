@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v2/borrowings")]
 [Authorize]
 public class BorrowingController(IBorrowingService borrowing, IMapper mapper) : ControllerBase
 {

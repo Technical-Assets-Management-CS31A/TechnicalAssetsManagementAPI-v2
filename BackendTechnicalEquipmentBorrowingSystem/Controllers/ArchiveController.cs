@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v2/archives")]
 [Authorize(Roles = "SuperAdmin,Admin")]
 public class ArchiveController(IArchiveService archive) : ControllerBase
 {

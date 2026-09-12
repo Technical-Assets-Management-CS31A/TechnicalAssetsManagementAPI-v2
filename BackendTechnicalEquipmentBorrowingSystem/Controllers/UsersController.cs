@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v2/users")]
 [Authorize]
 public class UsersController(IUserService users, IMapper mapper) : ControllerBase
 {

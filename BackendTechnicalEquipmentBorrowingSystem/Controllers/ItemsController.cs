@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v2/items")]
 [Authorize]
 public class ItemsController(IItemService items, IMapper mapper) : ControllerBase
 {

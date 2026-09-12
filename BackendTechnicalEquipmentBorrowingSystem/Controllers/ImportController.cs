@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v2/imports")]
 [Authorize(Roles = "SuperAdmin,Admin")]
 public class ImportController(IImportService import) : ControllerBase
 {

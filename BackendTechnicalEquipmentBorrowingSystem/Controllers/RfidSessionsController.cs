@@ -8,7 +8,7 @@ namespace BackendTechnicalEquipmentBorrowingSystem.Controllers;
 // Web-initiated session starts require a user; station-side "complete" callbacks are the
 // hardware/kiosk talking to the API. Device auth for those is a known gap (see README).
 [ApiController]
-[Route("api/rfid")]
+[Route("api/v2/rfid-sessions")]
 public class RfidSessionsController(IRfidSessionService sessions) : ControllerBase
 {
     [Authorize(Roles = "SuperAdmin,Admin")]
